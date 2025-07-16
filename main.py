@@ -17,8 +17,7 @@ from bot.llm_ticket import (
     llm_parse_ticket_fields,
     llm_pick_ticket_id
 )
-with open(os.path.join(os.path.dirname(__file__), "bot", "user_tickets.json"), "w", encoding="utf-8") as f:
-    f.write("{}")
+
 load_dotenv()
 DISCORD_BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 
@@ -60,23 +59,16 @@ def clear_action_stack(user_id):
     update_session(user_id, action_stack=[])
 
 def unpack_mantis_ticket(remote):
-    """Unpacks ticket data from MantisHub API response."""
-    if isinstance(remote, dict):
-        if "issues" in remote and isinstance(remote["issues"], list):
-            if len(remote["issues"]) > 0:
-                return remote["issues"][0]
-        elif "issue" in remote:
-            return remote["issue"]
+    if isinstance(remote, dict) and "issues" in remote and isinstance(remote["issues"], list) and len(remote["issues"]) > 0:
+        return remote["issues"][0]
     return remote
 
 async def send_help(dm):
     await dm.send(
         "**Washing-Machine Bot Help:**\n"
         "- Type your washing machine problem to get help or troubleshooting.\n"
-        "- Type `status` to see your tickets.\n"
-        "- Use `close <ticket_id>` or `delete <ticket_id>` to manage tickets.\n"
-        "- Type `update` to get ticket update/history.\n"
-        "- Type `reset` to restart the session."
+        "- Say things like 'any update on my ticket', 'delete my leak ticket', 'close ticket 15', etc.\n"
+        "- Type `status` to see your tickets, or `reset` to restart the session."
     )
 
 @client.event
@@ -93,18 +85,17 @@ async def on_message(message):
     msg = message.content.strip()
     session = get_session(user_id)
 
-    # Handle session expiry
+    # Session expiry (5 minutes inactivity), preserve tickets
     if session_expired(user_id):
         preserve_tickets_on_reset(user_id)
         clear_action_stack(user_id)
         await message.channel.send("🔒 Your previous session expired due to inactivity. Let's start fresh. What's your washing machine issue?")
         return
 
-    # Handle new session or reset
     if not session_exists(user_id) or msg.lower() == "reset":
         preserve_tickets_on_reset(user_id)
         clear_action_stack(user_id)
-        await message.channel.send("👋 Hi! I'm Washing-Machine Bot. What's the issue with your machine?")
+        await message.channel.send("👋 Hi! I’m Washing-Machine Bot. What’s the issue with your machine?")
         return
 
     session = get_session(user_id)
@@ -115,123 +106,7 @@ async def on_message(message):
         await send_help(message.channel)
         return
 
-    if msg.lower().startswith("status"):
-        user_tickets = get_tickets_for_user(user_id)
-        if not user_tickets:
-            await message.channel.send("You have no open tickets with me.")
-        else:
-            lines = []
-            for t in user_tickets:
-                if isinstance(t, int):
-                    tid = t
-                    category = ""
-                    status = ""
-                else:
-                    tid = t.get("id")
-                    category = t.get("category", "")
-                    status = t.get("status", "")
-                
-                try:
-                    remote = mh_client.get_ticket(tid)
-                    remote = unpack_mantis_ticket(remote)
-                    
-                    summary = remote.get("summary", "No summary")
-                    remote_status = remote.get("status", {}).get("name", "Unknown")
-                    remote_category = remote.get("category", {}).get("name", "General")
-                    
-                    if remote_status and remote_status != status:
-                        update_ticket_status_for_user(user_id, tid, remote_status)
-                        status = remote_status
-                    if remote_category and remote_category != category:
-                        update_ticket_category_for_user(user_id, tid, remote_category)
-                        category = remote_category
-                        
-                    lines.append(f"ID: `{tid}` | {summary} | Status: {status} | Category: {category}")
-                except Exception as e:
-                    lines.append(f"ID: `{tid}` | Error fetching ticket: {str(e)}")
-            
-            await message.channel.send("Your tickets:\n" + "\n".join(lines))
-        clear_action_stack(user_id)
-        return
-
-    if msg.lower().startswith("update"):
-        user_tickets = get_tickets_for_user(user_id)
-        if not user_tickets:
-            await message.channel.send("You have no open tickets to update.")
-        else:
-            lines = []
-            for t in user_tickets:
-                if isinstance(t, int):
-                    tid = t
-                    category = ""
-                    status = ""
-                else:
-                    tid = t.get("id")
-                    category = t.get("category", "")
-                    status = t.get("status", "")
-                
-                try:
-                    remote = mh_client.get_ticket(tid)
-                    remote = unpack_mantis_ticket(remote)
-                    
-                    summary = remote.get("summary", "No summary")
-                    remote_status = remote.get("status", {}).get("name", "Unknown")
-                    remote_category = remote.get("category", {}).get("name", "General")
-                    notes = remote.get("notes", [])
-                    
-                    if remote_status and remote_status != status:
-                        update_ticket_status_for_user(user_id, tid, remote_status)
-                        status = remote_status
-                    if remote_category and remote_category != category:
-                        update_ticket_category_for_user(user_id, tid, remote_category)
-                        category = remote_category
-                    
-                    update_text = ""
-                    if notes:
-                        update_text = "\n".join([f"- {n.get('text', '')}" for n in notes])
-                    lines.append(f"\n――――――――――\nID: `{tid}` | {summary} | Status: {status} | Category: {category}\nUpdates:\n{update_text}")
-                except Exception as e:
-                    lines.append(f"\n――――――――――\nID: `{tid}` | Error fetching ticket: {str(e)}")
-            
-            await message.channel.send("Ticket updates/history:" + "\n".join(lines))
-        clear_action_stack(user_id)
-        return
-
-    if msg.lower().startswith("close"):
-        args = msg.split()
-        user_tickets = get_tickets_for_user(user_id)
-        ids = [t if isinstance(t, int) else t.get("id") for t in user_tickets]
-        if len(args) == 2 and args[1].isdigit() and int(args[1]) in ids:
-            tid = int(args[1])
-            try:
-                mh_client.update_ticket(tid, {"status": {"id": 90}})
-                update_ticket_status_for_user(user_id, tid, "closed")
-                await message.channel.send(f"✅ Ticket `{tid}` closed.")
-            except Exception as e:
-                await message.channel.send(f"Error closing ticket: {e}")
-        else:
-            await message.channel.send("Usage: `close <ticket_id>`. Use `status` to see your tickets.")
-        clear_action_stack(user_id)
-        return
-
-    if msg.lower().startswith("delete"):
-        args = msg.split()
-        user_tickets = get_tickets_for_user(user_id)
-        ids = [t if isinstance(t, int) else t.get("id") for t in user_tickets]
-        if len(args) == 2 and args[1].isdigit() and int(args[1]) in ids:
-            tid = int(args[1])
-            try:
-                mh_client.delete_ticket(tid)
-                remove_ticket_for_user(user_id, tid)
-                await message.channel.send(f"🗑️ Ticket `{tid}` deleted.")
-            except Exception as e:
-                await message.channel.send(f"Error deleting ticket: {e}")
-        else:
-            await message.channel.send("Usage: `delete <ticket_id>`. Use `status` to see your tickets.")
-        clear_action_stack(user_id)
-        return
-
-    # YES/NO LOGIC
+    # -------- YES/NO LOGIC, MAPPED TO ACTION STACK -----------
     if msg.lower() in ["yes", "y", "no", "n"]:
         last_action = peek_action(user_id)
         if last_action == "asked_kb":
@@ -303,7 +178,7 @@ async def on_message(message):
             preserve_tickets_on_reset(user_id)
             return
 
-    # LLM INTENT ROUTING
+    # -------- LLM INTENT ROUTING FOR ALL CASES ----------
     route = llm_route(msg, session)
     action = route.get("action")
     info = route.get("info", "")
@@ -324,6 +199,74 @@ async def on_message(message):
         clear_action_stack(user_id)
         await message.channel.send("🚫 Sorry, I can't share sensitive information.")
         preserve_tickets_on_reset(user_id)
+        return
+
+    if action == "ticket_status":
+        user_tickets = get_tickets_for_user(user_id)
+        if not user_tickets:
+            await message.channel.send("You have no open tickets.")
+        else:
+            lines = []
+            for t in user_tickets:
+                if isinstance(t, int):
+                    tid = t
+                    category = ""
+                    status = ""
+                else:
+                    tid = t.get("id")
+                    category = t.get("category", "")
+                    status = t.get("status", "")
+                try:
+                    remote = mh_client.get_ticket(tid)
+                    remote = unpack_mantis_ticket(remote)
+                    summary = remote.get("summary", "No summary")
+                    remote_status = remote.get("status", {}).get("name", "Unknown")
+                    remote_category = remote.get("category", {}).get("name", "General")
+                    notes = remote.get("notes", [])
+                    if remote_status and remote_status != status:
+                        update_ticket_status_for_user(user_id, tid, remote_status)
+                        status = remote_status
+                    if remote_category and remote_category != category:
+                        update_ticket_category_for_user(user_id, tid, remote_category)
+                        category = remote_category
+                    update_text = ""
+                    if notes:
+                        update_text = "\n".join([f"- {n.get('text', '')}" for n in notes])
+                    lines.append(f"\n――――――――――\nID: `{tid}` | {summary} | Status: {status} | Category: {category}\nUpdates:\n{update_text}")
+                except Exception as e:
+                    lines.append(f"\n――――――――――\nID: `{tid}` | Error fetching ticket: {str(e)}")
+            await message.channel.send("Ticket updates/history:" + "\n".join(lines))
+        clear_action_stack(user_id)
+        return
+
+    if action == "delete_ticket":
+        user_tickets = get_tickets_for_user(user_id)
+        tid = llm_pick_ticket_id(msg, user_tickets)
+        if tid is None:
+            await message.channel.send("Which ticket would you like to delete? Please specify the ticket ID or summary.")
+            return
+        try:
+            mh_client.delete_ticket(tid)
+            remove_ticket_for_user(user_id, tid)
+            await message.channel.send(f"🗑️ Ticket `{tid}` deleted.")
+        except Exception as e:
+            await message.channel.send(f"Error deleting ticket: {e}")
+        clear_action_stack(user_id)
+        return
+
+    if action == "close_ticket":
+        user_tickets = get_tickets_for_user(user_id)
+        tid = llm_pick_ticket_id(msg, user_tickets)
+        if tid is None:
+            await message.channel.send("Which ticket would you like to close? Please specify the ticket ID or summary.")
+            return
+        try:
+            mh_client.update_ticket(tid, {"status": {"id": 90}})
+            update_ticket_status_for_user(user_id, tid, "closed")
+            await message.channel.send(f"✅ Ticket `{tid}` closed.")
+        except Exception as e:
+            await message.channel.send(f"Error closing ticket: {e}")
+        clear_action_stack(user_id)
         return
 
     if action == "clarify":
