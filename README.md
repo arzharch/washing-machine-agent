@@ -38,8 +38,8 @@ Follow these steps to get the bot running locally.
 
 1.  **Clone the repository:**
     ```sh
-    git clone <your-repository-url>
-    cd arzharch-bot
+    git clone https://github.com/arzharch/washing-machine-agent.git
+    cd washing-machine-agent
     ```
 
 2.  **Create and activate a virtual environment:**
