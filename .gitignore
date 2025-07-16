@@ -1,0 +1,9 @@
+.venv
+.env
+docker
+bot/sessions
+bot/user_tickets.json
+mantishub/__pycache__
+bot/__pycache__
+config
+tests

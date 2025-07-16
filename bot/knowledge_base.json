@@ -1,0 +1,636 @@
+{
+  "version": "1.0",
+  "last_updated": "11-07-2025",
+  "categories": {
+    "detergent": {
+      "name": "Detergent Issues",
+      "description": "Problems related to detergent dispensing, dissolving, or effectiveness"
+    },
+    "drainage": {
+      "name": "Drainage Problems",
+      "description": "Issues with water draining from the washing machine"
+    },
+    "spinning": {
+      "name": "Spinning Issues",
+      "description": "Problems with the spin cycle or drum rotation"
+    },
+    "electrical": {
+      "name": "Electrical Problems",
+      "description": "Power, display, or electrical component issues"
+    },
+    "noise": {
+      "name": "Noise Issues",
+      "description": "Unusual sounds during operation"
+    },
+    "water": {
+      "name": "Water Issues",
+      "description": "Problems with water filling, temperature, or pressure"
+    },
+    "general": {
+      "name": "General Issues",
+      "description": "Common operational problems and maintenance"
+    }
+  },
+  "issues": {
+    "detergent_not_dispensing": {
+      "id": "detergent_not_dispensing",
+      "title": "Detergent Not Dispensing Properly",
+      "category": "detergent",
+      "keywords": [
+        "detergent",
+        "dispenser",
+        "soap",
+        "not dispensing",
+        "drawer",
+        "compartment"
+      ],
+      "description": "Washing machine is not dispensing detergent from the drawer during wash cycles",
+      "severity": "medium",
+      "common_causes": [
+        "Clogged detergent drawer",
+        "Water pressure too low",
+        "Detergent drawer not properly inserted",
+        "Buildup of detergent residue"
+      ],
+      "troubleshooting_steps": [
+        {
+          "step": 1,
+          "action": "Remove and clean the detergent drawer",
+          "description": "Pull out the detergent drawer completely and rinse with warm water. Use an old toothbrush to remove any buildup.",
+          "estimated_time": "5-10 minutes"
+        },
+        {
+          "step": 2,
+          "action": "Check water pressure",
+          "description": "Ensure your home's water pressure is adequate. Try running other faucets to check pressure.",
+          "estimated_time": "2-3 minutes"
+        },
+        {
+          "step": 3,
+          "action": "Clean the drawer housing",
+          "description": "Wipe down the area where the drawer fits into the machine. Remove any soap residue or debris.",
+          "estimated_time": "5 minutes"
+        },
+        {
+          "step": 4,
+          "action": "Reinstall and test",
+          "description": "Reinstall the drawer properly and run a test cycle with detergent to verify it's dispensing.",
+          "estimated_time": "30-45 minutes"
+        }
+      ],
+      "prevention_tips": [
+        "Clean detergent drawer monthly",
+        "Use recommended detergent amounts",
+        "Use liquid detergent if powder keeps clogging"
+      ],
+      "category_name": "Detergent Issues",
+      "symptoms": [],
+      "related_issues": []
+    },
+    "machine_not_draining": {
+      "id": "machine_not_draining",
+      "title": "Water Not Draining from Machine",
+      "category": "drainage",
+      "keywords": [
+        "not draining",
+        "water standing",
+        "drain",
+        "pump",
+        "clogged",
+        "water left"
+      ],
+      "description": "Water remains in the drum after the wash cycle completes",
+      "severity": "high",
+      "common_causes": [
+        "Clogged drain hose",
+        "Blocked drain pump filter",
+        "Kinked drain hose",
+        "Drain pump failure"
+      ],
+      "troubleshooting_steps": [
+        {
+          "step": 1,
+          "action": "Check drain hose",
+          "description": "Ensure the drain hose is not kinked, twisted, or clogged. Check where it connects to the standpipe or sink.",
+          "estimated_time": "5-10 minutes"
+        },
+        {
+          "step": 2,
+          "action": "Clean drain pump filter",
+          "description": "Locate the drain pump filter (usually at bottom front). Place towels down, unscrew filter slowly, and clean out debris.",
+          "estimated_time": "15-20 minutes"
+        },
+        {
+          "step": 3,
+          "action": "Check for blockages",
+          "description": "Remove any visible lint, coins, or small items from the filter housing.",
+          "estimated_time": "5 minutes"
+        },
+        {
+          "step": 4,
+          "action": "Test drain cycle",
+          "description": "Replace filter and run a drain/spin cycle to test if water drains properly.",
+          "estimated_time": "10-15 minutes"
+        }
+      ],
+      "prevention_tips": [
+        "Check pockets for small items before washing",
+        "Clean drain filter monthly",
+        "Use appropriate detergent amounts"
+      ],
+      "category_name": "Drainage Problems",
+      "symptoms": [],
+      "related_issues": []
+    },
+    "excessive_vibration": {
+      "id": "excessive_vibration",
+      "title": "Excessive Vibration During Spin Cycle",
+      "category": "spinning",
+      "keywords": [
+        "vibration",
+        "shaking",
+        "moving",
+        "unbalanced",
+        "spin",
+        "noise"
+      ],
+      "description": "Washing machine vibrates excessively or moves during the spin cycle",
+      "severity": "medium",
+      "common_causes": [
+        "Unbalanced load",
+        "Unlevel machine",
+        "Worn suspension springs",
+        "Damaged drum bearings"
+      ],
+      "troubleshooting_steps": [
+        {
+          "step": 1,
+          "action": "Check load balance",
+          "description": "Stop the cycle and redistribute clothes evenly around the drum. Avoid washing single heavy items alone.",
+          "estimated_time": "2-3 minutes"
+        },
+        {
+          "step": 2,
+          "action": "Level the machine",
+          "description": "Use a spirit level to check if the machine is level. Adjust the feet as needed.",
+          "estimated_time": "10-15 minutes"
+        },
+        {
+          "step": 3,
+          "action": "Check machine stability",
+          "description": "Ensure the machine is on a solid, level surface. Check that all four feet are firmly on the ground.",
+          "estimated_time": "5 minutes"
+        },
+        {
+          "step": 4,
+          "action": "Test with small load",
+          "description": "Run a cycle with a small, well-distributed load to see if vibration persists.",
+          "estimated_time": "30-45 minutes"
+        }
+      ],
+      "prevention_tips": [
+        "Always distribute clothes evenly",
+        "Don't overload the machine",
+        "Ensure machine is properly leveled"
+      ],
+      "category_name": "Spinning Issues",
+      "symptoms": [],
+      "related_issues": []
+    },
+    "machine_wont_start": {
+      "id": "machine_wont_start",
+      "title": "Machine Won't Start or Power On",
+      "category": "electrical",
+      "keywords": [
+        "won't start",
+        "no power",
+        "dead",
+        "not turning on",
+        "display blank"
+      ],
+      "description": "Washing machine shows no signs of power or won't begin a cycle",
+      "severity": "high",
+      "common_causes": [
+        "Power supply issues",
+        "Door not properly closed",
+        "Control panel malfunction",
+        "Blown fuse or tripped breaker"
+      ],
+      "troubleshooting_steps": [
+        {
+          "step": 1,
+          "action": "Check power connection",
+          "description": "Ensure the machine is plugged in securely. Check if the outlet is working by testing with another device.",
+          "estimated_time": "2-3 minutes"
+        },
+        {
+          "step": 2,
+          "action": "Check door closure",
+          "description": "Make sure the door is completely closed and latched. Clean the door seal if needed.",
+          "estimated_time": "2-3 minutes"
+        },
+        {
+          "step": 3,
+          "action": "Check circuit breaker",
+          "description": "Verify that the circuit breaker hasn't tripped. Reset if necessary.",
+          "estimated_time": "3-5 minutes"
+        },
+        {
+          "step": 4,
+          "action": "Try different cycle",
+          "description": "Attempt to start with a different wash cycle to see if it's a specific program issue.",
+          "estimated_time": "2-3 minutes"
+        }
+      ],
+      "prevention_tips": [
+        "Ensure proper electrical connection",
+        "Keep door seals clean",
+        "Don't overload electrical circuits"
+      ],
+      "category_name": "Electrical Problems",
+      "symptoms": [],
+      "related_issues": []
+    },
+    "loud_banging_noise": {
+      "id": "loud_banging_noise",
+      "title": "Loud Banging or Knocking Noise",
+      "category": "noise",
+      "keywords": [
+        "banging",
+        "knocking",
+        "loud noise",
+        "clunking",
+        "metal noise"
+      ],
+      "description": "Machine makes loud banging or knocking sounds during operation",
+      "severity": "high",
+      "common_causes": [
+        "Loose or foreign objects in drum",
+        "Worn drum bearings",
+        "Unbalanced load",
+        "Loose machine parts"
+      ],
+      "troubleshooting_steps": [
+        {
+          "step": 1,
+          "action": "Stop machine immediately",
+          "description": "Turn off the machine and unplug it for safety. Do not continue operating.",
+          "estimated_time": "1 minute"
+        },
+        {
+          "step": 2,
+          "action": "Check for foreign objects",
+          "description": "Look inside the drum for loose items like coins, buttons, or small toys. Remove any found objects.",
+          "estimated_time": "5-10 minutes"
+        },
+        {
+          "step": 3,
+          "action": "Inspect drum manually",
+          "description": "Gently rotate the drum by hand to check for unusual resistance or sounds.",
+          "estimated_time": "3-5 minutes"
+        },
+        {
+          "step": 4,
+          "action": "Check machine level",
+          "description": "Ensure the machine is properly leveled and all feet are stable.",
+          "estimated_time": "5-10 minutes"
+        }
+      ],
+      "prevention_tips": [
+        "Always check pockets before washing",
+        "Don't overload the machine",
+        "Schedule regular maintenance"
+      ],
+      "category_name": "Noise Issues",
+      "symptoms": [],
+      "related_issues": []
+    },
+    "water_not_filling": {
+      "id": "water_not_filling",
+      "title": "Water Not Filling Into Machine",
+      "category": "water",
+      "keywords": [
+        "no water",
+        "not filling",
+        "empty",
+        "water supply",
+        "inlet"
+      ],
+      "description": "Machine starts but water doesn't enter the drum",
+      "severity": "high",
+      "common_causes": [
+        "Closed water supply valves",
+        "Clogged inlet filters",
+        "Kinked inlet hoses",
+        "Faulty water inlet valve"
+      ],
+      "troubleshooting_steps": [
+        {
+          "step": 1,
+          "action": "Check water supply valves",
+          "description": "Ensure both hot and cold water supply valves behind the machine are fully open.",
+          "estimated_time": "2-3 minutes"
+        },
+        {
+          "step": 2,
+          "action": "Inspect inlet hoses",
+          "description": "Check that inlet hoses are not kinked, twisted, or damaged. Straighten if necessary.",
+          "estimated_time": "5 minutes"
+        },
+        {
+          "step": 3,
+          "action": "Clean inlet filters",
+          "description": "Turn off water supply, disconnect hoses, and clean the small filters inside the inlet connections.",
+          "estimated_time": "15-20 minutes"
+        },
+        {
+          "step": 4,
+          "action": "Test water flow",
+          "description": "Before reconnecting, test water flow from the supply to ensure adequate pressure.",
+          "estimated_time": "3-5 minutes"
+        }
+      ],
+      "prevention_tips": [
+        "Check inlet filters every 6 months",
+        "Ensure adequate water pressure",
+        "Replace hoses every 5 years"
+      ],
+      "category_name": "Water Issues",
+      "symptoms": [],
+      "related_issues": []
+    },
+    "clothes_still_dirty": {
+      "id": "clothes_still_dirty",
+      "title": "Clothes Not Getting Clean",
+      "category": "general",
+      "keywords": [
+        "not clean",
+        "still dirty",
+        "stains",
+        "poor cleaning",
+        "washing not effective"
+      ],
+      "description": "Clothes come out of the wash cycle still dirty or with stains",
+      "severity": "medium",
+      "common_causes": [
+        "Insufficient detergent",
+        "Overloading the machine",
+        "Wrong wash cycle selected",
+        "Water temperature too low"
+      ],
+      "troubleshooting_steps": [
+        {
+          "step": 1,
+          "action": "Check detergent amount",
+          "description": "Use the recommended amount of detergent for your load size and soil level. More isn't always better.",
+          "estimated_time": "2 minutes"
+        },
+        {
+          "step": 2,
+          "action": "Reduce load size",
+          "description": "Wash smaller loads to allow clothes to move freely and get proper cleaning action.",
+          "estimated_time": "5 minutes"
+        },
+        {
+          "step": 3,
+          "action": "Select appropriate cycle",
+          "description": "Choose the correct wash cycle for your fabric type and soil level (heavy, normal, delicate).",
+          "estimated_time": "1 minute"
+        },
+        {
+          "step": 4,
+          "action": "Check water temperature",
+          "description": "Use warmer water for heavily soiled items (follow care labels). Ensure water heater is set to 120\u00b0F.",
+          "estimated_time": "2 minutes"
+        }
+      ],
+      "prevention_tips": [
+        "Pre-treat stains before washing",
+        "Don't overload the machine",
+        "Use quality detergent",
+        "Sort clothes by soil level"
+      ],
+      "category_name": "General Issues",
+      "symptoms": [],
+      "related_issues": []
+    },
+    "door_wont_open": {
+      "id": "door_wont_open",
+      "title": "Door Won't Open After Cycle",
+      "category": "general",
+      "keywords": [
+        "door stuck",
+        "won't open",
+        "locked",
+        "door lock",
+        "can't open"
+      ],
+      "description": "Cannot open the washing machine door after the cycle has completed",
+      "severity": "medium",
+      "common_causes": [
+        "Safety lock still engaged",
+        "Water still in drum",
+        "Door lock mechanism fault",
+        "Power issues"
+      ],
+      "troubleshooting_steps": [
+        {
+          "step": 1,
+          "action": "Wait for lock to disengage",
+          "description": "Wait 2-3 minutes after cycle completion. The door lock may have a delay for safety.",
+          "estimated_time": "3-5 minutes"
+        },
+        {
+          "step": 2,
+          "action": "Check for remaining water",
+          "description": "If water is visible in the drum, run a drain/spin cycle to remove it.",
+          "estimated_time": "10-15 minutes"
+        },
+        {
+          "step": 3,
+          "action": "Power cycle the machine",
+          "description": "Unplug the machine for 5 minutes, then plug back in to reset the door lock.",
+          "estimated_time": "10 minutes"
+        },
+        {
+          "step": 4,
+          "action": "Try emergency release",
+          "description": "If available, use the emergency door release mechanism (usually behind the kick panel).",
+          "estimated_time": "5-10 minutes"
+        }
+      ],
+      "prevention_tips": [
+        "Always wait for cycle completion",
+        "Keep door lock mechanism clean",
+        "Don't force the door open"
+      ],
+      "category_name": "General Issues",
+      "symptoms": [],
+      "related_issues": []
+    },
+    "bad_odor": {
+      "id": "bad_odor",
+      "title": "Bad Smell From Machine",
+      "category": "general",
+      "keywords": [
+        "bad smell",
+        "odor",
+        "musty",
+        "mildew",
+        "stinky",
+        "smells bad"
+      ],
+      "description": "Unpleasant odors coming from the washing machine",
+      "severity": "low",
+      "common_causes": [
+        "Mold and mildew buildup",
+        "Residual detergent buildup",
+        "Dirty door seal",
+        "Stagnant water in hoses"
+      ],
+      "troubleshooting_steps": [
+        {
+          "step": 1,
+          "action": "Clean door seal",
+          "description": "Wipe down the rubber door seal with a solution of water and white vinegar. Remove any visible mold.",
+          "estimated_time": "10-15 minutes"
+        },
+        {
+          "step": 2,
+          "action": "Run cleaning cycle",
+          "description": "Run a hot water cycle with 2 cups of white vinegar or washing machine cleaner.",
+          "estimated_time": "60-90 minutes"
+        },
+        {
+          "step": 3,
+          "action": "Clean detergent drawer",
+          "description": "Remove and thoroughly clean the detergent drawer with warm water and vinegar.",
+          "estimated_time": "10 minutes"
+        },
+        {
+          "step": 4,
+          "action": "Leave door open",
+          "description": "After cleaning, leave the door open for several hours to air dry completely.",
+          "estimated_time": "4-6 hours"
+        }
+      ],
+      "prevention_tips": [
+        "Leave door open after use",
+        "Clean door seal monthly",
+        "Use appropriate detergent amounts",
+        "Run cleaning cycle monthly"
+      ],
+      "category_name": "General Issues",
+      "symptoms": [],
+      "related_issues": []
+    },
+    "water_temperature_wrong": {
+      "id": "water_temperature_wrong",
+      "title": "Water Temperature Not Correct",
+      "category": "water",
+      "keywords": [
+        "water temperature",
+        "too hot",
+        "too cold",
+        "temperature wrong",
+        "lukewarm"
+      ],
+      "description": "Water temperature doesn't match the selected setting",
+      "severity": "medium",
+      "common_causes": [
+        "Water heater issues",
+        "Crossed inlet hoses",
+        "Faulty temperature sensor",
+        "Mixing valve problems"
+      ],
+      "troubleshooting_steps": [
+        {
+          "step": 1,
+          "action": "Check water heater",
+          "description": "Ensure your water heater is functioning properly and set to 120\u00b0F (49\u00b0C).",
+          "estimated_time": "5 minutes"
+        },
+        {
+          "step": 2,
+          "action": "Verify hose connections",
+          "description": "Check that hot and cold inlet hoses are connected to the correct valves (hot to hot, cold to cold).",
+          "estimated_time": "5-10 minutes"
+        },
+        {
+          "step": 3,
+          "action": "Test water temperature",
+          "description": "Run hot water at a nearby faucet to ensure hot water is available to the machine.",
+          "estimated_time": "3-5 minutes"
+        },
+        {
+          "step": 4,
+          "action": "Run test cycle",
+          "description": "Run a small load with hot water setting to test if temperature is now correct.",
+          "estimated_time": "30-45 minutes"
+        }
+      ],
+      "prevention_tips": [
+        "Label hot and cold connections",
+        "Check water heater annually",
+        "Flush water heater as recommended"
+      ],
+      "category_name": "Water Issues",
+      "symptoms": [],
+      "related_issues": []
+    }
+  },
+  "quick_fixes": {
+    "reset_machine": {
+      "title": "Reset the Machine",
+      "description": "Unplug for 5 minutes, then plug back in",
+      "applies_to": [
+        "electrical",
+        "general"
+      ]
+    },
+    "check_door_seal": {
+      "title": "Check Door Seal",
+      "description": "Clean rubber door seal and check for obstructions",
+      "applies_to": [
+        "general",
+        "drainage"
+      ]
+    },
+    "balance_load": {
+      "title": "Balance the Load",
+      "description": "Redistribute clothes evenly in the drum",
+      "applies_to": [
+        "spinning",
+        "noise"
+      ]
+    },
+    "clean_filter": {
+      "title": "Clean Drain Filter",
+      "description": "Remove and clean the drain pump filter",
+      "applies_to": [
+        "drainage",
+        "general"
+      ]
+    }
+  },
+  "maintenance_schedule": {
+    "monthly": [
+      "Clean detergent drawer",
+      "Wipe down door seal",
+      "Run cleaning cycle",
+      "Check drain filter"
+    ],
+    "quarterly": [
+      "Check inlet filters",
+      "Inspect hoses for wear",
+      "Clean outside of machine",
+      "Check machine level"
+    ],
+    "annually": [
+      "Professional inspection",
+      "Replace inlet hoses if needed",
+      "Check all connections",
+      "Update user manual knowledge"
+    ]
+  }
+}
