@@ -1,4 +1,4 @@
-# Wahing-Machine-Customer-Agent-Bot: AI-Powered Support Assistant
+# Washing-Machine-Customer-Agent-Bot: AI-Powered Support Assistant
 
 This project is a sophisticated Discord bot designed to act as a first-line of support for washing machine-related issues. It leverages a local Large Language Model (LLM) through Ollama to understand user queries, provide troubleshooting steps, and manage support tickets by integrating with a MantisHub issue tracker.
 
